@@ -12,7 +12,10 @@
         </div>
       </div>
       <div class="card-footer">
-        <button class="btn btn-sm btn-link">Add to favourite</button>
+        <button class="btn btn-sm" [ngClass]="{'btn-link':!item.favourite, 'btn-primary':item.favourite}" (click)="toggleFavourite(item)">
+          <ng-container *ngIf="!item.favourite">Add to favourite</ng-container>
+          <ng-container *ngIf="item.favourite">Favourite</ng-container>
+        </button>
       </div>
     </div>
   </div>
@@ -29,8 +32,14 @@
         </td>
         <td class="align-middle left">{{item.data.created_at|date:"mediumDate"}}</td>
         <td class="text-right">
-          <button class="btn btn-sm hidden-xs-down">Add to favourite</button>
-          <button class="btn btn-sm hidden-sm-up">Add</button>
+          <button class="btn btn-sm hidden-xs-down" [class.btn-primary]="item.favourite" (click)="toggleFavourite(item)">
+            <ng-container *ngIf="!item.favourite">Add to favourite</ng-container>
+            <ng-container *ngIf="item.favourite">Favourite</ng-container>
+          </button>
+          <button class="btn btn-sm hidden-sm-up" [class.btn-primary]="item.favourite" (click)="toggleFavourite(item)">
+            <ng-container *ngIf="!item.favourite">Add</ng-container>
+            <ng-container *ngIf="item.favourite">Fav.</ng-container>
+          </button>
         </td>
       </tr>
       </tbody>

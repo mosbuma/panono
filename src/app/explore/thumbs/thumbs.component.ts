@@ -16,4 +16,13 @@ export class ThumbsComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleFavourite(item: ExploreItem) {
+    if (window.localStorage.getItem(item.id)) {
+      window.localStorage.removeItem(item.id);
+      item.favourite = false;
+    } else {
+      window.localStorage.setItem(item.id, '1');
+      item.favourite = true;
+    }
+  }
 }

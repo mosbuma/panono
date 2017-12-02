@@ -24,7 +24,6 @@
         </div>
       </div>
 
-      <app-thumbs *ngIf="res.count" [items]="res.items" [type]="viewType" [filter]="filter"></app-thumbs>
       <div *ngIf="!res.count" class="alert alert-warning">
         <div class="alert-items">
           <div class="alert-item static">
@@ -49,13 +48,15 @@
           </div>
         </div>
       </div>
+
+      <app-thumbs *ngIf="res.count" [items]="res.items" [type]="viewType" [filter]="filter"></app-thumbs>
     </ng-container>
   </div>
 
   <div subnav *ngIf="res">
     Items: {{res.count}}
     <button (click)="explore(defaultUrl)" [disabled]="isFirstPage" class="btn btn-sm btn-link">first page</button>
-    <button (click)="explore(res.next)" class="btn btn-sm btn-link">next page</button>
+    <button (click)="explore(res.next)" *ngIf="res.next" class="btn btn-sm btn-link">next page</button>
   </div>
 
   <div sidenav class="nav-content">

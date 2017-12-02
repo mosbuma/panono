@@ -9,6 +9,7 @@ interface ExploreItem {
   id: string;
   self: string;
   data: ExploreItemData;
+  favourite: boolean;
 }
 
 interface ExploreItemData {

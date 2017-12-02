@@ -33,6 +33,10 @@ export class ExploreComponent implements OnInit {
     this.loadFailed = false;
     try {
       this.res = await this._getPromise(url);
+      this.res.items = this.res.items.map(item => {
+        item.favourite = window.localStorage.getItem(item.id) !== null;
+        return item;
+      });
     } catch (err) {
       this.loadFailed = true;
     }
