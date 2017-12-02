@@ -1,5 +1,5 @@
 <div class="row" *ngIf="type === 'grid'">
-  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let item of items">
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let item of items" [class.hidden]="filter === 'fav' && !item.favourite">
     <div class="card">
       <div class="card-img">
         <img src="{{item.data.images.thumbnails[2].url}}" alt="Item ID: {{item.id}}">
@@ -19,13 +19,25 @@
       </div>
     </div>
   </div>
+
+  <div class="col-lg-8" *ngIf="filter === 'fav' && noFavourites">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            Nothing to show
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="row" *ngIf="type === 'list'">
   <div class="col-lg-8">
     <table class="table">
       <tbody>
-      <tr *ngFor="let item of items">
+      <tr *ngFor="let item of items" [class.hidden]="filter === 'fav' && !item.favourite">
         <td class="align-middle left">
           <strong *ngIf="item.data.title">{{item.data.title}}</strong>
           <em *ngIf="!item.data.title">Untitled</em>
@@ -42,8 +54,10 @@
           </button>
         </td>
       </tr>
+      <tr *ngIf="filter === 'fav' && noFavourites">
+        <td>Nothing to show</td>
+      </tr>
       </tbody>
     </table>
   </div>
 </div>
-
