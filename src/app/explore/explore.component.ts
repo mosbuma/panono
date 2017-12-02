@@ -13,6 +13,8 @@ export class ExploreComponent implements OnInit {
   defaultUrl = '//api3-dev.panono.com/explore';
   loadFailed: boolean;
   isFirstPage: boolean;
+  viewType = 'grid';
+  filter = 'all';
 
 
   constructor(private http: HttpClient) { }

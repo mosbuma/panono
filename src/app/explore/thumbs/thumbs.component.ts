@@ -8,6 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ThumbsComponent implements OnInit {
 
   @Input() items: ExploreItem[];
+  @Input() type: string;
+  @Input() filter: string;
 
   constructor() { }
 

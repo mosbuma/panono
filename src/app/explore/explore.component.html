@@ -1,7 +1,7 @@
 <app-layout>
   <div main>
     <ng-container *ngIf="res">
-      <app-thumbs *ngIf="res.count" [items]="res.items"></app-thumbs>
+      <app-thumbs *ngIf="res.count" [items]="res.items" [type]="viewType" [filter]="filter"></app-thumbs>
       <div *ngIf="!res.count" class="alert alert-warning">
         <div class="alert-items">
           <div class="alert-item static">
@@ -30,8 +30,33 @@
   </div>
   <div subnav *ngIf="res">
     Items: {{res.count}}
-    <button (click)="explore(defaultUrl)" *ngIf="!isFirstPage" class="btn btn-sm btn-link">first page</button>
+    <button (click)="explore(defaultUrl)" [disabled]="isFirstPage" class="btn btn-sm btn-link">first page</button>
     <button (click)="explore(res.next)" class="btn btn-sm btn-link">next page</button>
+  </div>
+  <div sidenav class="nav-content">
+    <div>View</div>
+    <div class="btn-group">
+      <div class="radio btn">
+        <input type="radio" name="btn-group-1" checked id="btn-1" value="grid" [(ngModel)]="viewType">
+        <label for="btn-1">Grid</label>
+      </div>
+      <div class="radio btn">
+        <input type="radio" name="btn-group-1" id="btn-2" value="list" [(ngModel)]="viewType">
+        <label for="btn-2">List</label>
+      </div>
+    </div>
+    <p></p>
+    <div>Filter</div>
+    <div class="btn-group">
+      <div class="radio btn">
+        <input type="radio" name="btn-group-2" checked id="btn-3" value="all" [(ngModel)]="filter">
+        <label for="btn-3">All</label>
+      </div>
+      <div class="radio btn">
+        <input type="radio" name="btn-group-2" id="btn-4" value="fav" [(ngModel)]="filter">
+        <label for="btn-4">Favourites</label>
+      </div>
+    </div>
   </div>
 </app-layout>
 

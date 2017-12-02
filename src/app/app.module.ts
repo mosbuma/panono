@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ExploreComponent } from './explore/explore.component';
 import { PreloaderComponent } from './layout/preloader/preloader.component';
 import { ThumbsComponent } from './explore/thumbs/thumbs.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ThumbsComponent } from './explore/thumbs/thumbs.component';
   imports: [
     ClarityModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
