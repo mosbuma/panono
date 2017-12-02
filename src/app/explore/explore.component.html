@@ -1,6 +1,29 @@
 <app-layout>
   <div main>
     <ng-container *ngIf="res">
+      <div class="subnav-xs hidden-sm-up">
+        <div class="btn-group">
+          <div class="radio btn">
+            <input type="radio" name="btn-group-3" checked id="btn-5" value="grid" [(ngModel)]="viewType">
+            <label for="btn-5">Grid</label>
+          </div>
+          <div class="radio btn">
+            <input type="radio" name="btn-group-3" id="btn-6" value="list" [(ngModel)]="viewType">
+            <label for="btn-6">List</label>
+          </div>
+        </div>
+        <div class="btn-group">
+          <div class="radio btn">
+            <input type="radio" name="btn-group-4" checked id="btn-7" value="all" [(ngModel)]="filter">
+            <label for="btn-7">All</label>
+          </div>
+          <div class="radio btn">
+            <input type="radio" name="btn-group-5" id="btn-8" value="fav" [(ngModel)]="filter">
+            <label for="btn-8">Favourites</label>
+          </div>
+        </div>
+      </div>
+
       <app-thumbs *ngIf="res.count" [items]="res.items" [type]="viewType" [filter]="filter"></app-thumbs>
       <div *ngIf="!res.count" class="alert alert-warning">
         <div class="alert-items">
@@ -28,11 +51,13 @@
       </div>
     </ng-container>
   </div>
+
   <div subnav *ngIf="res">
     Items: {{res.count}}
     <button (click)="explore(defaultUrl)" [disabled]="isFirstPage" class="btn btn-sm btn-link">first page</button>
     <button (click)="explore(res.next)" class="btn btn-sm btn-link">next page</button>
   </div>
+
   <div sidenav class="nav-content">
     <div>View</div>
     <div class="btn-group">

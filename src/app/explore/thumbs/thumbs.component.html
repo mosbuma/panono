@@ -4,10 +4,11 @@
       <div class="card-img">
         <img src="{{item.data.images.thumbnails[2].url}}" alt="Item ID: {{item.id}}">
       </div>
-      <div class="card-block" *ngIf="item.data.title">
+      <div class="card-block">
         <div class="card-text">
           <span class="float-xs-right">{{item.data.created_at|date:"mediumDate"}}</span>
-          <strong>{{item.data.title}}</strong>
+          <strong *ngIf="item.data.title">{{item.data.title}}</strong>
+          <em *ngIf="!item.data.title">Untitled</em>
         </div>
       </div>
       <div class="card-footer">
@@ -22,7 +23,10 @@
     <table class="table">
       <tbody>
       <tr *ngFor="let item of items">
-        <td class="align-middle left">{{item.data.title}}</td>
+        <td class="align-middle left">
+          <strong *ngIf="item.data.title">{{item.data.title}}</strong>
+          <em *ngIf="!item.data.title">Untitled</em>
+        </td>
         <td class="align-middle left">{{item.data.created_at|date:"mediumDate"}}</td>
         <td class="text-right">
           <button class="btn btn-sm hidden-xs-down">Add to favourite</button>
