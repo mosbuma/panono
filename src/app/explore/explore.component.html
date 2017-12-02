@@ -30,6 +30,7 @@
   </div>
   <div subnav *ngIf="res">
     Items: {{res.count}}
+    <button (click)="explore(defaultUrl)" class="btn btn-sm btn-link">first page</button>
     <button (click)="explore(res.next)" class="btn btn-sm btn-link">next page</button>
   </div>
 </app-layout>
