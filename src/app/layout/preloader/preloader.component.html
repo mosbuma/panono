@@ -1,0 +1,15 @@
+<ng-container *ngIf="!inline">
+  <div class="modal-backdrop in">
+    <span class="spinner">
+      Loading...
+    </span>
+  </div>
+</ng-container>
+<ng-container *ngIf="inline">
+  <span class="spinner spinner-inline">
+    Loading...
+  </span>
+  <span>
+    Loading...
+  </span>
+</ng-container>

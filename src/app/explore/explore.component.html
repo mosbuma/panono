@@ -1,0 +1,37 @@
+<app-layout>
+  <div main>
+    <ng-container *ngIf="res">
+      <app-thumbs *ngIf="res.count" [items]="res.items"></app-thumbs>
+      <div *ngIf="!res.count" class="alert alert-warning">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+            Nothing to show
+          </span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="loadFailed" class="alert alert-danger">
+        <div class="alert-items">
+          <div class="alert-item static">
+            <div class="alert-icon-wrapper">
+              <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+            </div>
+            <span class="alert-text">
+            Unhandled error in api request
+          </span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div subnav *ngIf="res">
+    Items: {{res.count}}
+    <button (click)="explore(res.next)" class="btn btn-sm btn-link">next page</button>
+  </div>
+</app-layout>
+
+<app-preloader *ngIf="wait"></app-preloader>

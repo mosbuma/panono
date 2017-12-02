@@ -1,3 +1,24 @@
-<p>
-  layout works!
-</p>
+<div class="main-container">
+  <header class="header-4">
+    <div class="branding">
+      <a routerLink="/" routerLinkActive="active" title="Favorite 360">
+        <clr-icon shape="image" class="is-solid"></clr-icon>
+        <span class="title">Favorite 360</span>
+      </a>
+    </div>
+  </header>
+  <nav class="subnav">
+    <ng-content select="[subnav]"></ng-content>
+  </nav>
+  <div class="content-container">
+    <div class="content-area">
+      <ng-content select="[main]"></ng-content>
+    </div>
+    <nav class="sidenav">
+      <ng-content select="[sidenav]"></ng-content>
+    </nav>
+  </div>
+  <footer class="footer">
+    Favorite 360 &mdash; Demo Project for Panono, {{year}}
+  </footer>
+</div>
