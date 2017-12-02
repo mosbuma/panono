@@ -12,6 +12,7 @@ export class ExploreComponent implements OnInit {
   wait: boolean;
   defaultUrl = '//api3-dev.panono.com/explore';
   loadFailed: boolean;
+  isFirstPage: boolean;
 
 
   constructor(private http: HttpClient) { }
@@ -25,6 +26,7 @@ export class ExploreComponent implements OnInit {
   }
 
   async explore(url) {
+    this.isFirstPage = (url === this.defaultUrl);
     this.wait = true;
     this.loadFailed = false;
     try {

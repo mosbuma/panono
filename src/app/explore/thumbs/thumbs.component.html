@@ -1,1 +1,18 @@
-{{items|json}}
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let item of items">
+    <div class="card">
+      <div class="card-img">
+        <img src="{{item.data.images.thumbnails[2].url}}" alt="{{item.id}}">
+      </div>
+      <div class="card-block" *ngIf="item.data.title">
+        <div class="card-text">
+          <span class="float-xs-right">{{item.data.created_at|date:"mediumDate"}}</span>
+          <strong>{{item.data.title}}</strong>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-link">Add to favourite</button>
+      </div>
+    </div>
+  </div>
+</div>
