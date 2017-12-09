@@ -2,7 +2,7 @@
   <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let item of items" [class.hidden]="filter === 'fav' && !item.favourite">
     <div class="card">
       <div class="card-img">
-        <img src="{{item.data.images.thumbnails[2].url}}" alt="Item ID: {{item.id}}">
+        <img src="{{item.data.images.thumbnails[0].url}}" alt="Item ID: {{item.id}}">
       </div>
       <div class="card-block">
         <div class="card-text">
